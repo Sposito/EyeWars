@@ -11,37 +11,39 @@
 		var xToMove:Number;
 		var yToMove:Number;
 		
+		var playerController:PlayerController = new PlayerController(this as MovieClip);
 		public function Eye() {
+		StartEvents();	
 			
+			
+		}
+		
+		public function StartEvents(){
 			addEventListener(Event.ENTER_FRAME, Update);
-			addEventListener(MouseEvent.CLICK, Click);
 			
+		}
+		
+		public function KillEvents(){
+			removeEventListener(Event.ENTER_FRAME, Update);
+		
 		}
 		
 		public function Update(e:Event):void{
-			LookToMouse();
 			
-			if(moveToPos){
-				this.x += speed
-			}
+			MCTools.LookToMouse(this);
 		}
 		
+		//this function makes this movieclip turn to face the pointer
 		private function LookToMouse(){
 			var numX:Number = stage.mouseX - this.x;
 			var numY:Number = stage.mouseY - this.y;
 			
 			var angle:Number = Math.atan2(numY,numX ) * 180 / Math.PI;
-			this.rotation = angle;
-			trace(stage.mouseX + ", " + stage.mouseY);
+			parent.rotation = angle;
+			
 		}
 		
-		public function Click(mE:MouseEvent):void{
-			MoveToClick(mE.stageX,mE.stageY)
-		}
 		
-		private function MoveToClick(x:Number, y:Number){
-		
-		}
 	}
 	
 }
