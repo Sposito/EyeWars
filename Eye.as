@@ -30,18 +30,9 @@
 		
 		public function Update(e:Event):void{
 			
-			MCTools.LookToMouse(this);
+			MCTools.LookToMouse(this, false);
 		}
 		
-		//this function makes this movieclip turn to face the pointer
-		private function LookToMouse(){
-			var numX:Number = stage.mouseX - this.x;
-			var numY:Number = stage.mouseY - this.y;
-			
-			var angle:Number = Math.atan2(numY,numX ) * 180 / Math.PI;
-			parent.rotation = angle;
-			
-		}
 		
 		
 	}
